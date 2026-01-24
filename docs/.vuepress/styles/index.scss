@@ -1,0 +1,350 @@
+// Book-like styling for Marginalia blog
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+// CSS Custom Properties for theming
+:root {
+  --font-family: 'Lora', Georgia, 'Times New Roman', serif;
+  --font-family-code: 'SF Mono', Menlo, Monaco, Consolas, monospace;
+
+  // Light mode colors
+  --c-bg: #f5f1e8;
+  --c-bg-light: #faf8f3;
+  --c-text: #2b2520;
+  --c-text-accent: #4a3f38;
+  --c-text-light: #6b6159;
+  --c-text-muted: #8a827a;
+  --c-border: #d4cfc4;
+  --c-code-bg: #ebe7de;
+  // Cream-tinted code blocks for light mode
+  --c-code-block-bg: #e8e4d9;
+  --c-code-block-text: #2b2520;
+  --c-code-block-border: #d4cfc4;
+  // Syntax highlighting colors for light mode (warm tones)
+  --c-code-keyword: #8b4513;
+  --c-code-string: #2e6b4d;
+  --c-code-comment: #8a827a;
+  --c-code-function: #6b4423;
+  --c-code-number: #7b5544;
+  --c-code-operator: #5c4a3d;
+  --c-code-property: #4a5568;
+  --c-code-punctuation: #6b6159;
+}
+
+// Dark mode colors
+html.dark {
+  --c-bg: #1a1815;
+  --c-bg-light: #242019;
+  --c-text: #e8e4db;
+  --c-text-accent: #d4cfc4;
+  --c-text-light: #c4bfb4;
+  --c-text-muted: #9e9589;
+  --c-border: #3d3630;
+  --c-code-bg: #2d2820;
+  // Dark brown code blocks for dark mode
+  --c-code-block-bg: #252118;
+  --c-code-block-text: #e8e4db;
+  --c-code-block-border: #3d3630;
+  // Syntax highlighting colors for dark mode (warm tones)
+  --c-code-keyword: #d4a574;
+  --c-code-string: #a8c99d;
+  --c-code-comment: #7a736a;
+  --c-code-function: #e0c9a6;
+  --c-code-number: #d4b896;
+  --c-code-operator: #c4bfb4;
+  --c-code-property: #b8c4d4;
+  --c-code-punctuation: #9e9589;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--c-bg);
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--c-text);
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+// Content styling within BookLayout
+.book-content {
+  // Headings
+  h1 {
+    font-size: 1.85rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    margin-top: 0;
+    color: var(--c-text);
+    line-height: 1.3;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+    font-weight: 500;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--c-text);
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--c-text);
+  }
+
+  // Paragraphs
+  p {
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+    text-align: left;
+  }
+
+  // Links
+  a {
+    color: var(--c-text);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  // Blockquotes - elegant book style
+  blockquote {
+    margin: 1.75rem 0;
+    padding: 0 0 0 1.25rem;
+    border-left: 2px solid var(--c-border);
+    background-color: transparent;
+    font-style: italic;
+    color: var(--c-text-light);
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  // Lists
+  ul, ol {
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+
+    li {
+      margin-bottom: 0.35rem;
+    }
+  }
+
+  // Inline code
+  code {
+    font-family: var(--font-family-code);
+    font-size: 0.88em;
+    background-color: var(--c-code-bg);
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+    color: var(--c-text);
+  }
+
+  // Code blocks - cream theme that blends with blog
+  div[class*='language-'],
+  pre {
+    background-color: var(--c-code-block-bg) !important;
+    border: 1px solid var(--c-code-block-border);
+    border-radius: 6px;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+
+    code {
+      background-color: transparent;
+      color: var(--c-code-block-text);
+      padding: 1rem 1.25rem;
+      display: block;
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+
+    // Line numbers styling
+    .line-number {
+      color: var(--c-text-muted);
+      opacity: 0.6;
+    }
+  }
+
+  // Images
+  img {
+    max-width: 100%;
+    border-radius: 3px;
+    margin: 1.5rem 0;
+  }
+
+  // Horizontal rule
+  hr {
+    border: none;
+    border-top: 1px solid var(--c-border);
+    margin: 2rem 0;
+  }
+
+  // Strong text
+  strong {
+    font-weight: 600;
+  }
+
+  // Emphasis
+  em {
+    font-style: italic;
+  }
+}
+
+// Custom date styling for posts
+.post-date {
+  color: var(--c-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  display: block;
+}
+
+// Home content
+.home-content {
+  text-align: center;
+  padding-top: 1rem;
+
+  p {
+    max-width: 480px;
+    margin: 0 auto 2rem;
+  }
+}
+
+.home-essays {
+  text-align: left;
+  margin-top: 2rem;
+
+  h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 0.75rem;
+    }
+  }
+
+  a {
+    color: var(--c-text);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  em {
+    color: var(--c-text-muted);
+    font-size: 0.9rem;
+  }
+}
+
+// Hide VuePress default elements
+.page-nav,
+.page-meta,
+.sidebar,
+.navbar {
+  display: none !important;
+}
+
+// Syntax highlighting overrides for Prism.js
+// These use warm, book-like tones that blend with the cream theme
+div[class*='language-'] {
+  // Keywords (const, let, function, return, if, etc.)
+  .token.keyword,
+  .token.control,
+  .token.directive,
+  .token.tag {
+    color: var(--c-code-keyword) !important;
+  }
+
+  // Strings
+  .token.string,
+  .token.char,
+  .token.template-string {
+    color: var(--c-code-string) !important;
+  }
+
+  // Comments
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: var(--c-code-comment) !important;
+    font-style: italic;
+  }
+
+  // Functions
+  .token.function,
+  .token.class-name {
+    color: var(--c-code-function) !important;
+  }
+
+  // Numbers
+  .token.number,
+  .token.boolean {
+    color: var(--c-code-number) !important;
+  }
+
+  // Operators
+  .token.operator,
+  .token.arrow {
+    color: var(--c-code-operator) !important;
+  }
+
+  // Properties and attributes
+  .token.property,
+  .token.attr-name,
+  .token.variable {
+    color: var(--c-code-property) !important;
+  }
+
+  // Punctuation
+  .token.punctuation {
+    color: var(--c-code-punctuation) !important;
+  }
+
+  // Attribute values
+  .token.attr-value {
+    color: var(--c-code-string) !important;
+  }
+
+  // Regex
+  .token.regex {
+    color: var(--c-code-string) !important;
+  }
+
+  // Important
+  .token.important {
+    color: var(--c-code-keyword) !important;
+    font-weight: 600;
+  }
+
+  // Plain text
+  .token.plain-text,
+  .token {
+    color: var(--c-code-block-text);
+  }
+
+  // Language label (top right corner)
+  &::before {
+    color: var(--c-text-muted) !important;
+    font-size: 0.75rem;
+    opacity: 0.7;
+  }
+}

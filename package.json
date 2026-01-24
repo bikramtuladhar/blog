@@ -1,0 +1,16 @@
+{
+  "name": "marginalia-blog",
+  "version": "1.0.0",
+  "description": "Essays on reading, writing, and thinking",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "devDependencies": {
+    "@vuepress/bundler-vite": "^2.0.0-rc.18",
+    "@vuepress/plugin-google-analytics": "^2.0.0-rc.118",
+    "@vuepress/theme-default": "^2.0.0-rc.69",
+    "sass": "^1.77.0",
+    "vuepress": "^2.0.0-rc.18"
+  }
+}
