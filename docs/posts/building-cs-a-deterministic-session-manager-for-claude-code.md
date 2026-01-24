@@ -175,19 +175,44 @@ Using `cs` is straightforward:
 cs
 
 # Force new session (ignore database)
-cs --force
+cs --force    # or: cs -f
 
 # Remove stale session and start fresh
 cs --reset
 
+# Use Claude's picker if session not found
+cs --resume   # or: cs -R
+
 # See session info without launching
-cs --dry-run
+cs --dry-run  # or: cs -n
 
 # List all tracked sessions
-cs --list
+cs --list     # or: cs -l
+
+# Clear entire session database
+cs --clear
 
 # Update to latest version
-cs upgrade
+cs upgrade    # or: cs -U
+```
+
+### Claude Code CLI Passthrough
+
+All Claude Code CLI options are passed through automatically:
+
+```bash
+# Enable Chrome integration
+cs --chrome
+
+# Use a specific model
+cs --model opus
+
+# Combine cs flags with Claude flags
+cs -f --verbose
+
+# Run Claude subcommands (bypass session logic)
+cs doctor
+cs mcp
 ```
 
 The output provides clear feedback:
@@ -229,6 +254,7 @@ Building this tool taught me several things:
 2. **Platform abstraction is tricky**: The process launching differences between Unix and Windows required careful handling
 3. **Rust's conditional compilation is powerful**: `#[cfg(...)]` attributes made cross-platform code clean
 4. **GitHub Actions matrix builds are amazing**: 14 platforms from a single workflow
+5. **CLI wrapper ergonomics matter**: Passing through all underlying CLI options transparently makes the tool feel native rather than restrictive
 
 ## What's Next
 
@@ -236,12 +262,11 @@ Some features I'm considering for future versions:
 
 - Session naming/aliasing for easier identification
 - Integration with shell prompts to show current session
-- Automatic session cleanup for old/stale entries
 - Session statistics and usage tracking
 
 ## Conclusion
 
-**cs** solves a real workflow friction point for Claude Code users. By using deterministic UUIDs and simple file-based persistence, it provides instant session management with zero configuration. The entire tool is around 620 lines of Rust — small enough to understand completely, yet powerful enough to handle real-world usage.
+**cs** solves a real workflow friction point for Claude Code users. By using deterministic UUIDs and simple file-based persistence, it provides instant session management with zero configuration. The entire tool is around 800 lines of Rust — small enough to understand completely, yet powerful enough to handle real-world usage. It also passes through all Claude Code CLI options, so you can use `cs --chrome --model opus` just like you would with the native CLI.
 
 If you're a Claude Code user frustrated by session management, give it a try. And if you find bugs or have feature suggestions, contributions are welcome on [GitHub](https://github.com/bikramtuladhar/claude-code-resumer).
 
