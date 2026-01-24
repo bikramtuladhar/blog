@@ -9,6 +9,12 @@ export default defineUserConfig({
   title: "Bikram's Tech Journey",
   description: 'Technical notes and writings',
 
+  // Preload fonts for faster LCP
+  head: [
+    ['link', { rel: 'preload', href: '/fonts/lora-regular.woff2', as: 'font', type: 'font/woff2', crossorigin: '' }],
+    ['link', { rel: 'preload', href: '/fonts/lora-semibold.woff2', as: 'font', type: 'font/woff2', crossorigin: '' }],
+  ],
+
   bundler: viteBundler(),
 
   theme: defaultTheme({
