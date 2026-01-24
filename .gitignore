@@ -1,6 +1,7 @@
 # Dependencies
 node_modules/
 yarn.lock
+package-lock.json
 
 # VuePress build output
 docs/.vuepress/.cache/
