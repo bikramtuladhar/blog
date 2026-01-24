@@ -1,7 +1,8 @@
 {
-  "name": "marginalia-blog",
+  "name": "bikram-tech-journey",
   "version": "1.0.0",
-  "description": "Essays on reading, writing, and thinking",
+  "private": true,
+  "description": "Technical notes and writings",
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs"
@@ -12,5 +13,8 @@
     "@vuepress/theme-default": "^2.0.0-rc.69",
     "sass": "^1.77.0",
     "vuepress": "^2.0.0-rc.18"
+  },
+  "dependencies": {
+    "vue": "^3.5.22"
   }
 }
