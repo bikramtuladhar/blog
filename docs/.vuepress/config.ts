@@ -2,6 +2,7 @@ import { defineUserConfig } from 'vuepress'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { defaultTheme } from '@vuepress/theme-default'
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
+import { postsPlugin } from './plugins/postsPlugin'
 
 export default defineUserConfig({
   lang: 'en-US',
@@ -25,5 +26,6 @@ export default defineUserConfig({
     googleAnalyticsPlugin({
       id: 'G-VZ3VDPJNR0',
     }),
+    postsPlugin(),
   ],
 })

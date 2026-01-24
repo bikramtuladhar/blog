@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { useRoutes } from 'vuepress/client'
+// @ts-ignore - generated at build time
+import { posts } from '@temp/posts.js'
 
 interface PostInfo {
   path: string
@@ -8,48 +8,7 @@ interface PostInfo {
   date: string
 }
 
-const routes = useRoutes()
-const posts = ref<PostInfo[]>([])
-
-onMounted(async () => {
-  const postList: PostInfo[] = []
-
-  // Iterate over all routes
-  for (const [path, route] of Object.entries(routes.value)) {
-    // Only include pages in /posts/ directory, exclude the index
-    if (path.startsWith('/posts/') &&
-        path !== '/posts/' &&
-        !path.endsWith('/README.html')) {
-
-      try {
-        // Load the page data to get title and frontmatter
-        const pageChunk = await route.loader()
-        const pageData = pageChunk.data
-        const frontmatter = pageData.frontmatter as any
-
-        // Skip drafts
-        if (frontmatter?.draft === true) {
-          continue
-        }
-
-        postList.push({
-          path,
-          title: pageData.title || 'Untitled',
-          date: frontmatter?.date || '1970-01-01'
-        })
-      } catch (e) {
-        console.error(`Failed to load page data for ${path}`, e)
-      }
-    }
-  }
-
-  // Sort by date descending (newest first)
-  postList.sort((a, b) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime()
-  })
-
-  posts.value = postList
-})
+const postList: PostInfo[] = posts
 
 function formatDate(dateStr: string): string {
   const date = new Date(dateStr)
@@ -63,13 +22,13 @@ function formatDate(dateStr: string): string {
 
 <template>
   <div class="post-list">
-    <ul v-if="posts.length > 0">
-      <li v-for="post in posts" :key="post.path">
+    <ul v-if="postList.length > 0">
+      <li v-for="post in postList" :key="post.path">
         <a :href="post.path">{{ post.title }}</a>
         <em v-if="post.date && post.date !== '1970-01-01'"> — {{ formatDate(post.date) }}</em>
       </li>
     </ul>
-    <p v-else class="no-posts">Loading posts...</p>
+    <p v-else class="no-posts">No posts found.</p>
   </div>
 </template>
 
